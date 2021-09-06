@@ -1,6 +1,5 @@
 package com.Scrapper.Newspaper.Service;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +11,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import com.Scrapper.Newspaper.Bean.NewsDetails;
 import com.Scrapper.Newspaper.Bean.NewsFeedDetails;
@@ -31,14 +29,15 @@ public class ScrapNewsFeeds {
 	public void Scrapping() {
 	ArrayList<String> news = new ArrayList<String>();
 	List<NewsDetails> links = newsDetailsRepository.findAll();
-	String temp = "";
-	String temp2;
 	
 	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
     Date date = new Date(); 
 	
 	for(NewsDetails link : links ) {
 		
+	news.clear();
+	String temp = "";
+	String temp2;
 	System.out.println("Link : " + link.getUrl() + "Organization : " + link.getOrganization());
 	Document page;
 	NewsFeedDetails newsFeedDetails = new NewsFeedDetails();

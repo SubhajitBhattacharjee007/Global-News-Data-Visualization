@@ -1,31 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="style/Table.css"/>
+<link rel="stylesheet" type="text/css" href="style/loader.css"/>
 <title>Insert title here</title>
 </head>
+<style>
+body {
+  background-color: black;
+  
+}
+#Data  tr, #Data td {
+  color: white;
+}
+div.B {border-style: double; color: #04AA6D;}
+div.A {border-style: double; color: #04AA6D;}
+
+a{color: #b3ffcc; }
+a:hover {color :#04AA6D ;  font-weight: bolder; text-shadow: 4px 4px 4px #04AA6D;}
+</style>
 <body>
-
-[[${Status}]]
-
+<script type="text/javascript">
+function showLoader() {
+	alert("It will take some time to load!");
+	document.getElementById("bouncing-loader").style.display = "";
+	
+}
+</script>
+<div class="A">
+<span style="color: #6666ff;  text-shadow: 4px 4px 4px #04AA6D; font-size: large; font-weight:bolder;">ADD A NEWS PAPER URL</span>
 <form action="AddUrl" method="get">
-<table>
+<table id="Data">
 <tr>
 <td>FEED NEWS URL : </td>
-<td><input type="text" name="addNewsUrl" placeholder=""></td>
+<td><input type="text" name="addNewsUrl" id="addNewsUrl"  placeholder=""></td>
 </tr>
 <tr>
 <td>ORGANIZATION'S NAME : </td>
-<td><input type="text" name="orgName" placeholder=""></td>
+<td><input type="text" name="orgName" id="orgName" placeholder=""></td>
 </tr>
-
 <tr>
-<td></td><td><input type="submit" value="Feed!" class="test"></td>
+<td></td>
+<td><input type="submit" value="Feed!" ></td>
 </tr>
-</form>
 </table>
+</form>
+<span style="color: #4cff42">[[${Status}]]</span><br>
+</div>
+<div class="B">
+<span style="color: #6666ff; text-shadow: 4px 4px 4px #04AA6D; font-size: large; font-weight:bolder;">CHECK OCCURANCE OF A KEYWORD IN THE HEADLINE OF A NEWSPAPER</span>
+<form action="GetHeadLineKEYWORDCount" method="get">
+<table id="Data">
+<tr>
+<td>NEWS PAPER ID : </td>
+<td><input type="text" name="id"  placeholder=""></td>
+</tr>
+<tr>
+<td>KEYWORD : </td>
+<td><input type="text" name="keyword" placeholder=""></td>
+</tr>
+<tr><td>CHOOSE DATE</td>
+<td><input type="date" name="date"></td></tr>
+<tr>
+<td></td>
+<td><input type="submit" value="Check Occurance" ></td>
+</tr>
+</table>
+</form>
+<span style="color: #4cff42">[[${Count}]]</span><br>
+</div>
+<br><a href="Test" onclick="showLoader()">[ UPDATE GLOBAL DATA ]</a><span style="color: #e4f0ef">
+	|| </span>
+	<a href="GlobalDataVisualization">[ GLOBAL DATA ]</a><br>
+	<div class="bouncing-loader" id="bouncing-loader" style="display: none;">
+    <div></div><div></div>
+    <div></div><div></div>
+    <div></div><div></div>
+    </div>
 
-<a href="Test">SHOW DATA VISUALIZATION</a><br>
-<a href="GlobalDataVisualization">GLOBAL DATA</a>
+<br>
+<table id="news">
+  <tr>
+    <th>ID</th>
+    <th>ORGANIZATION</th>
+    <th>URL</th>
+  </tr>
+  <tr th:each="newsDetails : ${newsDetails}">
+    <td th:text="${newsDetails.id}"></td>
+    <td th:text="${newsDetails.organization}"></td>
+    <td th:text="${newsDetails.url}"></td>
+  </tr>
+</table>
+<br>
 </body>
 </html>

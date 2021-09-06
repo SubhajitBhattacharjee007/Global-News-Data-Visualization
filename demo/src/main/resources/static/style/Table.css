@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+#news {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#news td, #news th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#news tr:nth-child(even){background-color: #66ff99;}
+#news tr:nth-child(odd){background-color: #b3ffcc;}
+#news tr:hover {background-color: #99ffbb;}
+
+#news th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
