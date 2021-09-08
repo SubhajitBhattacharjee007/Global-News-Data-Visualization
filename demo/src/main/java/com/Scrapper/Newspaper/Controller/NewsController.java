@@ -48,7 +48,14 @@ public class NewsController {
 	public String GlobalDataVisualization() {
 		
 		//return "GlobalDataVisualization.html";
-		return "Test.html";
+		return "Main.html";
+	}
+	
+	@RequestMapping("/Main")
+	public String Main() {
+		
+		//return "GlobalDataVisualization.html";
+		return "Main.html";
 	}
 	
 	@RequestMapping(value="/AddUrl", method = RequestMethod.GET)
@@ -63,9 +70,19 @@ public class NewsController {
 		news.setDate(formatter.format(date));
 		news.setOrganization(orgName);
 		
+		String succStatus = "Successfully added in the List!";
+		String errStatus = "Unable to add, please check the URL.";
+		
+		if(addNewsUrl!=null && !addNewsUrl.isEmpty() && orgName!=null && !orgName.isEmpty()) {
 		NewsDetailsRepository.save(news);
+		model.addAttribute("Status", succStatus);
 		List<NewsDetails> newsDetails = NewsDetailsRepository.findAll();
-		model.addAttribute("Status", "Successfully added in the List!");
+		model.addAttribute("newsDetails", newsDetails);
+		return "AddNewsLink.html";
+		}
+		
+		model.addAttribute("Status", errStatus);
+		List<NewsDetails> newsDetails = NewsDetailsRepository.findAll();
 		model.addAttribute("newsDetails", newsDetails);
 		return "AddNewsLink.html";
 	}

@@ -10,14 +10,14 @@
   padding: 8px;
 }
 
-#news tr:nth-child(even){background-color: #66ff99;}
-#news tr:nth-child(odd){background-color: #b3ffcc;}
-#news tr:hover {background-color: #99ffbb;}
+#news tr:nth-child(even){background-color: #55a9e0;}
+#news tr:nth-child(odd){background-color: #8bccf7;}
+#news tr:hover {background-color: white;}
 
 #news th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04AA6D;
+  background-color: #06558a;
   color: white;
 }

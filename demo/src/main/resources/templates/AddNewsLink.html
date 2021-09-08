@@ -10,17 +10,17 @@
 </head>
 <style>
 body {
-  background-color: black;
+  background-color: #faf1d7;
   
 }
 #Data  tr, #Data td {
-  color: white;
+  color: black;
 }
 div.B {border-style: double; color: #04AA6D;}
 div.A {border-style: double; color: #04AA6D;}
 
-a{color: #b3ffcc; }
-a:hover {color :#04AA6D ;  font-weight: bolder; text-shadow: 4px 4px 4px #04AA6D;}
+a{color: #008CBA; }
+a:hover {color :#008CBA ;  font-weight: bolder; text-shadow: 4px 4px 4px #008CBA;}
 </style>
 <body>
 <script type="text/javascript">
@@ -31,7 +31,7 @@ function showLoader() {
 }
 </script>
 <div class="A">
-<span style="color: #6666ff;  text-shadow: 4px 4px 4px #04AA6D; font-size: large; font-weight:bolder;">ADD A NEWS PAPER URL</span>
+<span style="color: #6666ff;  text-shadow: 1px 1px black; font-size: large; font-weight:bolder;">ADD A NEWS PAPER URL</span>
 <form action="AddUrl" method="get">
 <table id="Data">
 <tr>
@@ -44,14 +44,14 @@ function showLoader() {
 </tr>
 <tr>
 <td></td>
-<td><input type="submit" value="Feed!" ></td>
+<td><button class="button button1" type="submit">FEED</button></td>
 </tr>
 </table>
 </form>
-<span style="color: #4cff42">[[${Status}]]</span><br>
+<span style="color: #0a400a; font-style:italic; font-weight:bold; font-family: Lucida Console,Courier New,monospace;">[[${Status}]]</span><br>
 </div>
 <div class="B">
-<span style="color: #6666ff; text-shadow: 4px 4px 4px #04AA6D; font-size: large; font-weight:bolder;">CHECK OCCURANCE OF A KEYWORD IN THE HEADLINE OF A NEWSPAPER</span>
+<span style="color: #6666ff; text-shadow: 1px 1px black; font-size: large; font-weight:bolder;">CHECK OCCURANCE OF A KEYWORD IN THE HEADLINE OF A NEWSPAPER</span>
 <form action="GetHeadLineKEYWORDCount" method="get">
 <table id="Data">
 <tr>
@@ -66,13 +66,13 @@ function showLoader() {
 <td><input type="date" name="date"></td></tr>
 <tr>
 <td></td>
-<td><input type="submit" value="Check Occurance" ></td>
+<td><button class="button button2"  type="submit">Check Occurance</button></td>
 </tr>
 </table>
 </form>
-<span style="color: #4cff42">[[${Count}]]</span><br>
+<span style="color: #06558a;font-style:italic; font-weight:bold; font-family: Lucida Console,Courier New,monospace;">[[${Count}]]</span><br>
 </div>
-<br><a href="Test" onclick="showLoader()">[ UPDATE GLOBAL DATA ]</a><span style="color: #e4f0ef">
+<br><a href="Test" onclick="showLoader()">[ UPDATE GLOBAL DATA ]</a><span>
 	|| </span>
 	<a href="GlobalDataVisualization">[ GLOBAL DATA ]</a><br>
 	<div class="bouncing-loader" id="bouncing-loader" style="display: none;">
@@ -95,5 +95,6 @@ function showLoader() {
   </tr>
 </table>
 <br>
+<a href="Main">Main</a>
 </body>
 </html>
