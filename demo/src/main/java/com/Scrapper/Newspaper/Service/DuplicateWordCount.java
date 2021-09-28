@@ -1,16 +1,11 @@
 package com.Scrapper.Newspaper.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.Scrapper.Newspaper.Bean.NewsDetails;
-import com.Scrapper.Newspaper.Bean.NewsFeedDetails;
 import com.Scrapper.Newspaper.Repository.NewsDetailsRepository;
 import com.Scrapper.Newspaper.Repository.NewsFeedDetailsRepository;
+import com.Scrapper.Newspaper.Util.NewsFeed;
 
 @Component
 public class DuplicateWordCount {
@@ -22,23 +17,12 @@ public class DuplicateWordCount {
 	NewsFeedDetailsRepository newsFeedDetailsRepository;
 	
 
-    public int getCount(String startDate, String endDate, int paperId, String keyword) {
+    public int getCount(String news, String keyword) {
 	
-    	
-	String feed = newsFeedDetailsRepository.findNewsFeedByPaperId(startDate, endDate, paperId);
-    
-	System.out.println("FEED : " + feed+ "Id : " + paperId);
-	String news = "";
-	int count;
-    
-	if(feed!=null) {
-		news = feed.toLowerCase();   
-	}else { 
-		feed ="";
-	}
-    String containWord= keyword;
-        
+    int count=0;	
+    String containWord= keyword;   
     count = countFreq(containWord.toLowerCase(), news);
+    //StringOccuranceCheck.checkOccurance(news);
     
                   
        System.out.println("No of time the given word occurred : " +count);    

@@ -1,0 +1,122 @@
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+  
+  <style>
+    html,
+    body,
+    #map {
+      height: 100%;
+      margin: 0;
+      z-index: 1;
+    }
+    
+   #legend {
+      line-height: 18px;
+      color: #555;
+      position: absolute;
+      bottom: 40px;
+      right: 20px;
+      z-index: 2;
+      background-color: white;
+      padding: 5px;
+    }
+    #legend i {
+      width: 50px;
+      height: 18px;
+      float: left;
+      margin-right: 8px;
+      opacity: 0.7;
+    }
+    
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<div id="legend"></div>  
+ <script src="js/Jquery.js"></script> 
+ <script type="text/javascript">
+  
+ 	var newMap = L.map('map').setView([40.00,40.00], 2);
+	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href=”http://osm.org/copyright”>OpenStreetMap</a> contributors'
+	}).addTo(newMap);
+		
+	 function style(feature) {
+        return {
+        	radius: 8,
+    	    fillColor: getColor(feature.properties.pop_est),
+    	    color: "#000",
+    	    weight: 1,
+    	    opacity: 1,
+    	    fillOpacity: 0.8,
+    	    clickable: true
+        };
+	}
+        
+	function getColor(percent) {
+		return percent > 1000000000
+        ? '#52143d'
+        : percent > 500000000
+        ? '#8f246b'
+        : percent > 100000000
+        ? '#b82e8a'
+        : percent > 50000000
+        ? '#d147a3'
+        : percent > 10000000
+        ? '#e085c2'
+        : percent > 1000000
+        ? '#f0c2e0'
+        : '#faebf5';
+		
+	};
+
+	
+	var greenIcon = L.icon({
+	    iconUrl: 'image/marker1.png',
+	    iconSize:     [50, 100], // size of the icon
+	    //shadowSize:   [50, 64], // size of the shadow
+	    iconAnchor:   [22, 35], // point of the icon which will correspond to marker's location
+	    //shadowAnchor: [4, 62],  // the same for the shadow
+	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+	});
+	
+	function yourOnEachFeatureFunction(feature, layer){
+	    if (feature.properties.name) {
+	        layer.bindPopup(feature.properties.sovereignt);
+	    }
+	}
+	
+	
+	$.getJSON("geoJSON/custom.geojson",function(data){
+	 
+	L.geoJson(data, {style: style}).addTo(newMap);	
+		
+    var myLayer = L.geoJson(data, {
+        onEachFeature: yourOnEachFeatureFunction,
+        color:"rgba(0, 0, 0, 0.5)",
+	    weight: 1,
+	    opacity: 5,
+	    fillOpacity: 0,
+	    clickable: true,
+        
+    }).addTo(newMap);
+    
+    L.marker([55.7558, 37.6173], {icon: greenIcon}).addTo(newMap);
+    
+	})
+     
+	
+	//add title and legend
+        var grades = [1000000000, 500000000, 100000000, 50000000, 10000000, 1000000, 0];
+        var div    = document.getElementById('legend');
+		
+
+        grades.forEach(function(grade, i) {
+          div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i>  Population : ' + grades[i] + '' + (grades[i - 1] ? '&ndash;' + grades[i - 1] + '' : '+') +'<br/>' ;
+        });
+      
+    
+</script>
+</body>

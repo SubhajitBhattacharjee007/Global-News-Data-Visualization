@@ -1,36 +1,22 @@
-@keyframes bouncing-loader {
-  to {
-    opacity: 0.1;
-    transform: translate3d(0, -16px, 0);
-  }
-}
-
-.bouncing-loader {
-  display: flex;
-  justify-content: center;
-}
-
-.bouncing-loader > div {
+.loader {
+  border: 8px solid #8bccf7;
+  border-radius: 50%;
+  border-top: 8px solid #225C88;
   width: 30px;
   height: 30px;
-  margin: 3rem 0.2rem;
-  background: #04AA6D;
-  border-radius: 50%;
-  animation: bouncing-loader 0.6s infinite alternate;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
 }
 
-.bouncing-loader > div:nth-child(2) {
-  animation-delay: 0.2s;
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
 }
 
-.bouncing-loader > div:nth-child(3) {
-  animation-delay: 0.4s;
-}
-.bouncing-loader > div:nth-child(4) {
-  animation-delay: 0.6s;
-}
-.bouncing-loader > div:nth-child(5) {
-  animation-delay: 0.6s;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .button {
@@ -84,3 +70,22 @@ input {
 input:focus {
   border: 3px solid #4CAF50;
 }
+
+body {
+  background-color: #faf1d7;
+  
+}
+#Data  tr, #Data td {
+  color: black;
+}
+div.C1 {border-style: double; color: #04AA6D; width: 40%; float: left;}
+div.C2 {width: 40%; float: left; padding-left: 20px; padding-top: 7px;}
+div.loader{float: left;}
+div.status{float: left; padding-left: 20px ; text-align: center; padding-top: 12px}
+div.B {border-style: double; color: #04AA6D;}
+div.A {border-style: double; color: #04AA6D;}
+
+
+a{color: #008CBA; }
+a:hover {color :#008CBA ;  font-weight: bolder;}
+

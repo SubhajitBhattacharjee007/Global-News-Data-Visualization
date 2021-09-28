@@ -1,7 +1,51 @@
 <html>
-<head>    
+<head> 
+<link rel="stylesheet" type="text/css" href="style/mainPage.css"/>   
+<link rel="stylesheet" type="text/css" href="style/Table.css"/>
+<link rel="stylesheet" type="text/css" href="style/loader.css"/>
 </head>
 <body>
-<p>This is demo text.<p>
+<div class="Header">GLOBAL NEWS DATA VISUALIZATION</div>
+
+<div class="Nav">
+<ul>
+	<li a href="#">NAV-1</li>
+	<li a href="#">NAV-2</li>
+	<li a href="#">NAV</li>
+	<li a href="#" id="li-left">LOGOUT</li>
+</ul>
+</div>
+
+<div class="Content">
+<div class="Content-left-content">
+<div style=" border: 1px solid white; text-decoration-style: wavy;">ADD NEWS URL</div>
+<div style=" border: 1px solid white;">CHECK KEYWORD OCCURANCE</div>
+<div style=" border: 1px solid white;">SHOW NEWS LINKS</div>
+</div>
+<div class="Content-middle-content">
+<form action="AddUrl" method="get">
+<table id="Data">
+<tr>
+<td>FEED NEWS URL : </td>
+<td><input type="text" name="addNewsUrl" id="addNewsUrl"  placeholder=""></td>
+</tr>
+<tr>
+<td>ORGANIZATION'S NAME : </td>
+<td><input type="text" name="orgName" id="orgName" placeholder=""></td>
+</tr>
+<tr>
+<td></td>
+<td><button class="button button1" type="submit">FEED</button></td>
+</tr>
+</table>
+</form>
+
+<span style="color: #0a400a; font-style:italic; font-weight:bold; font-family: Lucida Console,Courier New,monospace;">[[${Status}]]</span><br>
+</div>
+
+</div>
+
+<div class="Footer">FOOTER</div>
+
 </body>
 </html>

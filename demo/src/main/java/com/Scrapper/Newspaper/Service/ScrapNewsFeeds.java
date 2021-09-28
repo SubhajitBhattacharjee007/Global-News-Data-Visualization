@@ -1,6 +1,7 @@
 package com.Scrapper.Newspaper.Service;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,13 +29,11 @@ public class ScrapNewsFeeds {
 	
 	public void Scrapping() {
 	ArrayList<String> news = new ArrayList<String>();
-	List<NewsDetails> links = newsDetailsRepository.findAll();
-	
-	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-    Date date = new Date(); 
+	List<NewsDetails> links = newsDetailsRepository.findAll(); 
+    Date date = new Date();
+    //java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 	
 	for(NewsDetails link : links ) {
-		
 	news.clear();
 	String temp = "";
 	String temp2;
@@ -56,7 +55,7 @@ public class ScrapNewsFeeds {
 					temp = temp2;
 				}
 				newsFeedDetails.setNewsPaperId(link.getId());
-				newsFeedDetails.setDate(formatter.format(date));
+				newsFeedDetails.setDate(date);
 				newsFeedDetails.setData(temp);
 				newsFeedDetailsRepository.save(newsFeedDetails);
 				System.out.println("Data fetch completed...");

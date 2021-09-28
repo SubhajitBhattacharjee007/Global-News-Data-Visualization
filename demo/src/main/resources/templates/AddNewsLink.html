@@ -8,25 +8,12 @@
 <link rel="stylesheet" type="text/css" href="style/loader.css"/>
 <title>Insert title here</title>
 </head>
-<style>
-body {
-  background-color: #faf1d7;
-  
-}
-#Data  tr, #Data td {
-  color: black;
-}
-div.B {border-style: double; color: #04AA6D;}
-div.A {border-style: double; color: #04AA6D;}
-
-a{color: #008CBA; }
-a:hover {color :#008CBA ;  font-weight: bolder; text-shadow: 4px 4px 4px #008CBA;}
-</style>
 <body>
 <script type="text/javascript">
 function showLoader() {
 	alert("It will take some time to load!");
-	document.getElementById("bouncing-loader").style.display = "";
+	document.getElementById("loader").style.display = "";
+	document.getElementById("status").style.display = "";
 	
 }
 </script>
@@ -72,16 +59,19 @@ function showLoader() {
 </form>
 <span style="color: #06558a;font-style:italic; font-weight:bold; font-family: Lucida Console,Courier New,monospace;">[[${Count}]]</span><br>
 </div>
-<br><a href="Test" onclick="showLoader()">[ UPDATE GLOBAL DATA ]</a><span>
+
+<div class="C1">
+<br><a href="Test" onclick="showLoader()" >[ UPDATE GLOBAL DATA ]</a><span>
 	|| </span>
 	<a href="GlobalDataVisualization">[ GLOBAL DATA ]</a><br>
-	<div class="bouncing-loader" id="bouncing-loader" style="display: none;">
-    <div></div><div></div>
-    <div></div><div></div>
-    <div></div><div></div>
-    </div>
 
-<br>
+<br>    
+</div>
+<div class="C2">
+    <div class="loader" id="loader" style="display: none;"></div> 
+    <div class="status" id="status" style="display: none;">Please wait...</div>
+</div>
+
 <table id="news">
   <tr>
     <th>ID</th>
@@ -95,6 +85,5 @@ function showLoader() {
   </tr>
 </table>
 <br>
-<a href="Main">Main</a>
 </body>
 </html>

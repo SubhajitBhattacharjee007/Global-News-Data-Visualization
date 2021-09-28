@@ -1,5 +1,6 @@
 package com.Scrapper.Newspaper.Bean;
 
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -15,13 +16,13 @@ public class NewsFeedDetails {
 	int uniqeId;
 	@Lob
 	String data;
-	String date;
+	Date date;
 	int newsPaperId;
 	
 	public NewsFeedDetails() {
 	}
 
-	public NewsFeedDetails(int uniqeId, String data, String date, int newsPaperId) {
+	public NewsFeedDetails(int uniqeId, String data, Date date, int newsPaperId) {
 		this.uniqeId = uniqeId;
 		this.data = data;
 		this.date = date;
@@ -54,11 +55,11 @@ public class NewsFeedDetails {
 		this.data = data;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	
